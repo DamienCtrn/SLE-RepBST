@@ -8,6 +8,13 @@
 #include <assert.h>
 #include <string.h>
 
+typedef struct bst {
+    int nb_values;
+    int root;
+    int depth;
+    int **bst;
+} BST;
+
 /**
  * Main function calling the calculus function
  * @param n number of values
@@ -28,10 +35,8 @@ int ** allocate2D(int nb_lines, int nb_columns);
 void desallocate2D(int **array);
 
 /**
- * Function basically printing the BST
- * @param n number of values
- * @param bst tree [[-1,-1],[0,2],[-1,-1]]
+ * Function printing the BST in command line
  */
-void print_BST_line(int n, int **bst);
+void print_BST_line(BST tree);
 
 #endif // __GENBST_H__
