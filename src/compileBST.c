@@ -88,7 +88,7 @@ int main (int argc, char *argv[]) {
       fscanf(freqFile, "%d", values + i);
       // printf("%d\n", *(values + i));
   }
-
+  // Generating the tree here
   genBST(n, values);
 
   fclose(freqFile);
