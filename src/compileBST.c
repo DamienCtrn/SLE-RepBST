@@ -15,7 +15,7 @@
 #include <assert.h>
 #include <string.h>
 #include "genBST.h"
-
+#include "stack.h"
 
 /**
  * Main function
