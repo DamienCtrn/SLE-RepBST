@@ -43,4 +43,4 @@ int stack_push(Stack *s, int d);
  */
 int stack_top(Stack *s);
 
-#endif //__STACK_H__
+#endif /* end of include guard: __STACK_H__ */
