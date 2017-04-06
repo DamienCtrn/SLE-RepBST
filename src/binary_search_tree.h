@@ -16,7 +16,7 @@ typedef struct bst {
 /**
  * Initializing a Tree with -1 values
  */
-void initialize(BST *tree, int n);
+void initialize_BST(BST *tree, int n);
 
 /**
  * Function allocating memory for a 2D array
@@ -28,7 +28,7 @@ int ** allocate2D(int nb_lines, int nb_columns);
  * Function freeing memory previously allocated
  * with allocate2D
  */
-void desallocate2D(int **array);
+void desallocate2D(BST *tree);
 
 /**
  * Function printing the BST in command line

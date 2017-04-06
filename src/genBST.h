@@ -9,6 +9,7 @@
 #include <string.h>
 #include "binary_search_tree.h"
 #include "stack.h"
+#include "bst_exploration.h"
 
 #define INFINITE 1000000
 #define TAB_STACK_SIZE 10

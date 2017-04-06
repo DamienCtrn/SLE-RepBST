@@ -91,6 +91,7 @@ int main (int argc, char *argv[]) {
   // Generating the tree here
   genBST(n, values);
 
+  free(values);
   fclose(freqFile);
 
 

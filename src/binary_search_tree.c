@@ -3,9 +3,11 @@
 /**
  * Initializing a Tree with -1 values
  */
-void initialize(BST *tree, int n){
+void initialize_BST(BST *tree, int n){
+    // Allocation
     tree->bst = allocate2D(n, 2);
     assert(tree->bst != NULL);
+    // Initialization
     for (size_t i = 0; i < n; i++) {
         for (size_t j = 0; j < 2; j++) {
             tree->bst[i][j] = -1;
@@ -49,9 +51,9 @@ int ** allocate2D(int nb_lines, int nb_columns){
  * Function freeing memory previously allocated
  * with allocate2D
  */
-void desallocate2D(int **array){
-    free(*array);
-    free(array);
+void desallocate2D(BST *tree){
+    free(*tree->bst);
+    free(tree->bst);
 }
 
 /**

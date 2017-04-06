@@ -8,14 +8,20 @@
 void genBST(int n, int *values){
     // BST Creation and Initialization
     BST tree;
-    initialize(&tree, n);
+    initialize_BST(&tree, n);
 
     // Generating the tree
     tree.avg_cost = recurciv_gen1(values, n, 1, &tree.root);
 
+    // Testing stuff
+    Explo_Arrays e;
+    initialize_EA(&e, n);
+    print_EA_line(&e);
+    desallocateEA(&e);
+
     // Printing and Freeing
     print_BST_line(&tree);
-    desallocate2D(tree.bst);
+    desallocate2D(&tree);
 }
 
 /**
