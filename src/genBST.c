@@ -10,16 +10,18 @@ void genBST(int n, int *values){
     BST tree;
     initialize_BST(&tree, n);
 
-    // Generating the tree
-    tree.avg_cost = recurciv_gen1(values, n, 1, &tree.root);
+    // Using the first Recurciv function
+    // tree.avg_cost = recurciv_gen1(values, n, 1, &tree.root);
 
-    // Testing stuff
+    // Using the iterative function
     Explo_Arrays e;
     initialize_EA(&e, n);
-    print_EA_line(&e);
-    desallocateEA(&e);
+
+    tree.avg_cost = explore_and_store(&e, values);
 
     // Printing and Freeing
+    print_EA_line(&e);
+    desallocateEA(&e);
     print_BST_line(&tree);
     desallocate2D(&tree);
 }
@@ -40,7 +42,7 @@ int recurciv_gen1(int *values, int n, int depth, int *i_ret){
     if (n == 1) { *i_ret = 0;  return values[0]*depth; }
 
     // Normal cases
-    int min = INFINITE;
+    int min = MAX_INT;
     int curr;
     int i_left, i_right;
     for (size_t i = 0; i < n; i++) {

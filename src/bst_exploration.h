@@ -6,7 +6,7 @@
 #include <assert.h>
 
 // Definition of the int lenth used : 16 bits signed
-#define MAX_INT 32767;
+#define MAX_TYPE 32767;
 typedef short int inttype;
 
 
@@ -22,9 +22,15 @@ typedef struct explo_arrays {
  *  [[ , , , ][ , , ][ , ][ ]] lines decrementing in length for each array
  *
  *         Allows to access to the cost and root of a sub-tree with :
- *                    ****_array[length][index of begin]
+ *                    ****_array[length-1][index of begin]
  *************************************************************************/
 
+/**
+ * Fill the Exploring Structure
+ * with the average cost of each sub-tree possible and their roots
+ * @return average cost (also in cost_array[nb_values-1][0])
+ */
+int explore_and_store(Explo_Arrays *e, int *values);
 
 /**
  * Initializing an exploration array structure
@@ -47,5 +53,10 @@ void desallocateEA(Explo_Arrays *e);
  * Function printing the Exploration Arrays in command line
  */
 void print_EA_line(Explo_Arrays *e);
+
+/**
+ * Sums the values of an array from begin to begin + length
+ */
+int part_array_sum(int *array, int begin, int length);
 
 #endif /* end of include guard: __BST_EXPLORATION_H__ */

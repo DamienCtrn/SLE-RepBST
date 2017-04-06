@@ -60,7 +60,7 @@ void desallocate2D(BST *tree){
  * Function printing the BST in command line
  */
 void print_BST_line(BST *tree){
-    printf("==== PRINTING BST ============\n");
+    printf("============- PRINTING BST -============\n");
     printf("  nb of elements = %d\n", tree->nb_values);
     printf("  root index     = %d\n", tree->root);
     printf("  average cost   = %d\n", tree->avg_cost);
@@ -69,5 +69,5 @@ void print_BST_line(BST *tree){
         printf("[%d,%d]", tree->bst[i][0], tree->bst[i][1]);
     }
     printf("]\n");
-    printf("==============================\n");
+    printf("========================================\n");
 }

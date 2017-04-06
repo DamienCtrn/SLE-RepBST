@@ -11,9 +11,7 @@
 #include "stack.h"
 #include "bst_exploration.h"
 
-#define INFINITE 1000000
-#define TAB_STACK_SIZE 10
-
+#define MAX_INT 4000000
 /**
  * Main function calling the calculus function
  * @param n number of values
