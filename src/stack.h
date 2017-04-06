@@ -7,6 +7,7 @@
 
 #define STACK_MAX_SIZE 1000
 
+/* Simple Implementation of a Stack */
 
 typedef struct stack {
     int data[STACK_MAX_SIZE];

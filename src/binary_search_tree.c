@@ -18,7 +18,7 @@ void initialize(BST *tree, int n){
 
 /**
  * Function allocating memory for a 2D array
- * the data array is contigous
+ * the data array is contiguous
  */
 int ** allocate2D(int nb_lines, int nb_columns){
     int **p = NULL;
