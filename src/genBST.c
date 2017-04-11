@@ -18,6 +18,7 @@ void genBST(int n, int *values){
     initialize_EA(&e, n);
 
     tree.avg_cost = explore_and_store(&e, values);
+    // tree.root = fill_BST(tree.bst, n, e.root_array, n, 0);
 
     // Printing and Freeing
     print_EA_line(&e);

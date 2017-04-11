@@ -18,7 +18,7 @@ int explore_and_store(Explo_Arrays *e, int *values){
         // For each beginning index possible
         for (size_t k = 0; k < n-l+1; k++) {
             // Try as root all the indexes between k and k+l
-            sum = part_array_sum(values, k, l+1);
+            sum = part_array_sum(values, k, l);
             for (size_t i = k; i < k+l; i++) {
                 c = sum + ((i >   k  )? e->cost_array[ i-k-1 ][ k ] : 0)
                         + ((i < k+l-1)? e->cost_array[k+l-i-2][i+1] : 0);
@@ -30,6 +30,25 @@ int explore_and_store(Explo_Arrays *e, int *values){
         }
     }
     return e->cost_array[n-1][0];
+}
+
+/**
+ * Recurcive filling of the array tree of BST structure
+ * Using the root_array of the Explo_Arrays structure
+ * @param n : total length of the initial value array
+ * @param L : length of the tree array
+ * @param b : index of beginning
+ * @return  : root of the sub-tree
+ */
+int fill_BST(int **tree, int n, inttype **root_array, int L, int b){
+    if (L < 1 || L > n || b < 0 || b > n-L) {
+        return -1;
+    } else {
+        int r = root_array[L-1][b];
+        tree[r][0] = fill_BST(tree, n, root_array,     r-b, b);
+        tree[r][1] = fill_BST(tree, n, root_array, b+L-r-1, r+1);
+        return r;
+    }
 }
 
 /**
@@ -123,7 +142,7 @@ void print_EA_line(Explo_Arrays *e){
  */
 int part_array_sum(int *array, int begin, int length){
     int s = 0;
-    for (size_t i = begin; i < length; i++) {
+    for (size_t i = begin; i < begin + length; i++) {
         s += array[i];
     }
     return s;

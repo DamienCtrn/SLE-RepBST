@@ -33,6 +33,16 @@ typedef struct explo_arrays {
 int explore_and_store(Explo_Arrays *e, int *values);
 
 /**
+ * Recurcive filling of the array tree of BST structure
+ * Using the root_array of the Explo_Arrays structure
+ * @param n : total length of the initial value array
+ * @param L : length of the tree array
+ * @param b : index of beginning
+ * @return  : root of the sub-tree
+ */
+int fill_BST(int **tree, int n, inttype **root_array, int L, int b);
+
+/**
  * Initializing an exploration array structure
  */
 void initialize_EA(Explo_Arrays *e, int n);
