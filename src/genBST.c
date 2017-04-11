@@ -5,7 +5,7 @@
  * @param n number of values
  * @param values array of values
  */
-void genBST(int n, int *values){
+void genBST(int n, inttype *values){
     // BST Creation and Initialization
     BST tree;
     initialize_BST(&tree, n);
@@ -37,14 +37,14 @@ void genBST(int n, int *values){
  * @param i_ret root chosen
  * @return average cost of accessing to an element
  */
-int recurciv_gen1(int *values, int n, int depth, int *i_ret){
+inttype recurciv_gen1(inttype *values, int n, int depth, int *i_ret){
     // Limit cases
     if (n == 0) { *i_ret = -1; return 0; }
     if (n == 1) { *i_ret = 0;  return values[0]*depth; }
 
     // Normal cases
-    int min = MAX_INT;
-    int curr;
+    inttype min = MAX_TYPE;
+    inttype curr;
     int i_left, i_right;
     for (size_t i = 0; i < n; i++) {
         curr = recurciv_gen1(values    , i    , depth+1, &i_left)

@@ -11,13 +11,12 @@
 #include "stack.h"
 #include "bst_exploration.h"
 
-#define MAX_INT 4000000
 /**
  * Main function calling the calculus function
  * @param n number of values
  * @param values array of values
  */
-void genBST(int n, int *values);
+void genBST(int n, inttype *values);
 
 /**
  * Basic implementation of Bellman's equation
@@ -29,6 +28,6 @@ void genBST(int n, int *values);
  * @param i_ret root chosen
  * @return average cost of accessing to an element
  */
-int recurciv_gen1(int *values, int n, int depth, int *i_ret);
+inttype recurciv_gen1(inttype *values, int n, int depth, int *i_ret);
 
 #endif /* end of include guard: __GENBST_H__ */

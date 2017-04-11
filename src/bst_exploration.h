@@ -5,15 +5,15 @@
 #include <stdlib.h>
 #include <assert.h>
 
-// Definition of the int lenth used : 16 bits signed
-#define MAX_TYPE 32767;
-typedef short int inttype;
+// Definition of the int lenth used : 32 bits unsigned
+#define MAX_TYPE 0xFFFFFFFF
+typedef unsigned long inttype;
 
 
 typedef struct explo_arrays {
     int nb_values;
     inttype **cost_array;
-    inttype **root_array;
+    short **root_array;
 } Explo_Arrays;
 
 /**************************************************************************
@@ -30,7 +30,7 @@ typedef struct explo_arrays {
  * with the average cost of each sub-tree possible and their roots
  * @return average cost (also in cost_array[nb_values-1][0])
  */
-int explore_and_store(Explo_Arrays *e, int *values);
+int explore_and_store(Explo_Arrays *e, inttype *values);
 
 /**
  * Recurcive filling of the array tree of BST structure
@@ -40,7 +40,7 @@ int explore_and_store(Explo_Arrays *e, int *values);
  * @param b : index of beginning
  * @return  : root of the sub-tree
  */
-int fill_BST(int **tree, int n, inttype **root_array, int L, int b);
+int fill_BST(int **tree, int n, short **root_array, int L, int b);
 
 /**
  * Initializing an exploration array structure
@@ -49,9 +49,16 @@ void initialize_EA(Explo_Arrays *e, int n);
 
 /**
  * Function allocating memory for a specific data structure
+ * the type allocated is defined by inttype
  * the data array is contiguous
  */
-inttype ** allocateEA(int n);
+inttype ** allocateEA_inttype(int n);
+
+/**
+ * Function allocating memory for a specific data structure
+ * the data array is contiguous
+ */
+short ** allocateEA_short(int n);
 
 /**
  * Function freeing memory previously allocated
@@ -67,6 +74,6 @@ void print_EA_line(Explo_Arrays *e);
 /**
  * Sums the values of an array from begin to begin + length
  */
-int part_array_sum(int *array, int begin, int length);
+inttype part_array_sum(inttype *array, int begin, int length);
 
 #endif /* end of include guard: __BST_EXPLORATION_H__ */

@@ -5,7 +5,7 @@
  * with the average cost of each sub-tree possible and their roots
  * @return average cost (also in cost_array[nb_values][0])
  */
-int explore_and_store(Explo_Arrays *e, int *values){
+int explore_and_store(Explo_Arrays *e, inttype *values){
     int n = e->nb_values;
     int c, sum;
     // Sub-array of just 1 element is the element
@@ -40,7 +40,7 @@ int explore_and_store(Explo_Arrays *e, int *values){
  * @param b : index of beginning
  * @return  : root of the sub-tree
  */
-int fill_BST(int **tree, int n, inttype **root_array, int L, int b){
+int fill_BST(int **tree, int n, short **root_array, int L, int b){
     if (L < 1 || L > n || b < 0 || b > n-L) {
         return -1;
     } else {
@@ -56,9 +56,9 @@ int fill_BST(int **tree, int n, inttype **root_array, int L, int b){
  */
 void initialize_EA(Explo_Arrays *e, int n){
     // Allocation
-    e->cost_array = allocateEA(n);
+    e->cost_array = allocateEA_inttype(n);
     assert(e->cost_array != NULL);
-    e->root_array = allocateEA(n);
+    e->root_array = allocateEA_short(n);
     assert(e->root_array != NULL);
     // Initialization
     for (size_t i = 0; i < n; i++) {
@@ -72,9 +72,10 @@ void initialize_EA(Explo_Arrays *e, int n){
 
 /**
  * Function allocating memory for a specific data structure
+ * the type allocated is defined by inttype
  * the data array is contiguous
  */
-inttype ** allocateEA(int n){
+inttype ** allocateEA_inttype(int n){
     inttype **p = NULL;
 
     // Allocation the adresses of lines
@@ -85,6 +86,35 @@ inttype ** allocateEA(int n){
     else {
         // Allocating the data array
         *p = (inttype *)calloc((n * (n + 1))/2, sizeof(**p));
+        if (*p == NULL) {
+            free(p);
+            return NULL;
+        }
+        else {
+            // Bonding the adress array to actual data adresses
+            for (size_t i = 1; i < n; i++) {
+                p[i] = p[i-1] + n - i + 1;
+            }
+        }
+    }
+    return p;
+}
+
+/**
+ * Function allocating memory for a specific data structure
+ * the data array is contiguous
+ */
+short ** allocateEA_short(int n){
+    short **p = NULL;
+
+    // Allocation the adresses of lines
+    p = (short **)calloc(n, sizeof(*p));
+    if (p == NULL) {
+        return NULL;
+    }
+    else {
+        // Allocating the data array
+        *p = (short *)calloc((n * (n + 1))/2, sizeof(**p));
         if (*p == NULL) {
             free(p);
             return NULL;
@@ -120,7 +150,7 @@ void print_EA_line(Explo_Arrays *e){
     for (size_t i = 0; i < n; i++) {
         printf("[");
         for (size_t j = 0; j < n-i; j++) {
-            printf(" %d ", e->cost_array[i][j]);
+            printf(" %lu ", e->cost_array[i][j]);
         }
         printf("]\n");
     }
@@ -129,7 +159,7 @@ void print_EA_line(Explo_Arrays *e){
     for (size_t i = 0; i < n; i++) {
         printf("[");
         for (size_t j = 0; j < n-i; j++) {
-            printf(" %d ", e->root_array[i][j]);
+            printf(" %hi ", e->root_array[i][j]);
         }
         printf("]\n");
     }
@@ -140,8 +170,8 @@ void print_EA_line(Explo_Arrays *e){
 /**
  * Sums the values of an array from begin to begin + length (not included)
  */
-int part_array_sum(int *array, int begin, int length){
-    int s = 0;
+inttype part_array_sum(inttype *array, int begin, int length){
+    inttype s = 0;
     for (size_t i = begin; i < begin + length; i++) {
         s += array[i];
     }

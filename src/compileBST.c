@@ -15,7 +15,8 @@
 #include <assert.h>
 #include <string.h>
 #include "genBST.h"
-#include "stack.h"
+#include "bst_exploration.h"
+
 
 /**
  * Main function
@@ -28,7 +29,7 @@
 int main (int argc, char *argv[]) {
   long n = 0 ; // Number of elements in the dictionary
   FILE *freqFile = NULL ; // File that contains n positive integers defining the relative frequence of dictinary elements
-  int *values = NULL; // Array for stocking the n poisitve integers
+  inttype *values = NULL; // Array for stocking the n poisitve integers
 
   if(argc != 3){
     fprintf(stderr, "!!!!! Usage: ./compileBST n  originalFile !!!!!\n");
@@ -53,7 +54,7 @@ int main (int argc, char *argv[]) {
          {
             n = (long)resuLong;
             fprintf(stderr, "Number of elements in the dictionary: %ld\n", n);
-            values = calloc(n, sizeof(int));
+            values = calloc(n, sizeof(*values));
          }
          else
          {
@@ -85,7 +86,7 @@ int main (int argc, char *argv[]) {
   if (freqFile==NULL) {fprintf (stderr, "!!!!! Error opening originalFile !!!!!\n"); exit(EXIT_FAILURE);}
 
   for (size_t i = 0; i < n; i++) {
-      fscanf(freqFile, "%d", values + i);
+      fscanf(freqFile, "%lu", values + i);
       // printf("%d\n", *(values + i));
   }
   // Generating the tree here
