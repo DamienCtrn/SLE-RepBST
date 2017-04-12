@@ -5,7 +5,7 @@
  * with the average cost of each sub-tree possible and their roots
  * @return average cost (also in cost_array[nb_values][0])
  */
-int explore_and_store(Explo_Arrays *e, inttype *values){
+inttype explore_and_store(Explo_Arrays *e, inttype *values){
     int n = e->nb_values;
     int c, sum;
     // Sub-array of just 1 element is the element
@@ -150,7 +150,7 @@ void print_EA_line(Explo_Arrays *e){
     for (size_t i = 0; i < n; i++) {
         printf("[");
         for (size_t j = 0; j < n-i; j++) {
-            printf(" %lu ", e->cost_array[i][j]);
+            printf(" %lli ", e->cost_array[i][j]);
         }
         printf("]\n");
     }

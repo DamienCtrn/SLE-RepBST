@@ -6,8 +6,8 @@
 #include <assert.h>
 
 // Definition of the int lenth used : 32 bits unsigned
-#define MAX_TYPE 0xFFFFFFFF
-typedef unsigned long inttype;
+#define MAX_TYPE 0x7FFFFFFFFFFFFFFF
+typedef long long inttype;
 
 
 typedef struct explo_arrays {
@@ -30,7 +30,7 @@ typedef struct explo_arrays {
  * with the average cost of each sub-tree possible and their roots
  * @return average cost (also in cost_array[nb_values-1][0])
  */
-int explore_and_store(Explo_Arrays *e, inttype *values);
+inttype explore_and_store(Explo_Arrays *e, inttype *values);
 
 /**
  * Recurcive filling of the array tree of BST structure

@@ -8,7 +8,6 @@
 #include <assert.h>
 #include <string.h>
 #include "binary_search_tree.h"
-#include "stack.h"
 #include "bst_exploration.h"
 
 /**

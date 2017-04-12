@@ -86,7 +86,7 @@ int main (int argc, char *argv[]) {
   if (freqFile==NULL) {fprintf (stderr, "!!!!! Error opening originalFile !!!!!\n"); exit(EXIT_FAILURE);}
 
   for (size_t i = 0; i < n; i++) {
-      fscanf(freqFile, "%lu", values + i);
+      fscanf(freqFile, "%lli", values + i);
       // printf("%d\n", *(values + i));
   }
   // Generating the tree here
