@@ -40,7 +40,7 @@ inttype explore_and_store(Explo_Arrays *e, inttype *values);
  * @param b : index of beginning
  * @return  : root of the sub-tree
  */
-int fill_BST(int **tree, int n, short **root_array, int L, int b);
+short fill_BST(short **tree, int n, short **root_array, int L, int b);
 
 /**
  * Initializing an exploration array structure

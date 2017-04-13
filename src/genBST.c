@@ -21,9 +21,9 @@ void genBST(int n, inttype *values){
     tree.root = fill_BST(tree.bst, n, e.root_array, n, 0);
 
     // Printing and Freeing
-    print_EA_line(&e);
+    // print_EA_line(&e);
     desallocateEA(&e);
-    print_BST_line(&tree);
+    print_BST_Csynthax(&tree, values);
     desallocate2D(&tree);
 }
 

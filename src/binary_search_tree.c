@@ -15,24 +15,24 @@ void initialize_BST(BST *tree, int n){
     }
     tree->nb_values = n;
     tree->root = -1;
-    tree->avg_cost = -1;
+    tree->avg_cost = MAX_TYPE;
 }
 
 /**
  * Function allocating memory for a 2D array
  * the data array is contiguous
  */
-int ** allocate2D(int nb_lines, int nb_columns){
-    int **p = NULL;
+short ** allocate2D(int nb_lines, int nb_columns){
+    short **p = NULL;
 
     // Allocation the adresses of lines
-    p = (int **)calloc(nb_lines, sizeof(*p));
+    p = (short **)calloc(nb_lines, sizeof(*p));
     if (p == NULL) {
         return NULL;
     }
     else {
         // Allocating the data array
-        *p = (int *)calloc(nb_lines * nb_columns, sizeof(**p));
+        *p = (short *)calloc(nb_lines * nb_columns, sizeof(**p));
         if (*p == NULL) {
             free(p);
             return NULL;
@@ -62,12 +62,31 @@ void desallocate2D(BST *tree){
 void print_BST_line(BST *tree){
     printf("============- PRINTING BST -============\n");
     printf("  nb of elements = %d\n", tree->nb_values);
-    printf("  root index     = %d\n", tree->root);
-    printf("  average cost   = %d\n", tree->avg_cost);
+    printf("  root index     = %hi\n", tree->root);
+    printf("  average cost   = %lld\n", tree->avg_cost);
     printf("[");
     for (size_t i = 0; i < tree->nb_values; i++) {
-        printf("[%d,%d]", tree->bst[i][0], tree->bst[i][1]);
+        // printf("[%hi,%hi]", tree->bst[i][0], tree->bst[i][1]);
     }
     printf("]\n");
     printf("========================================\n");
+}
+
+/**
+ * Function printing the BST in C synthaxe
+ */
+void print_BST_Csynthax(BST *tree, inttype *values){
+    printf("static long BSTdepth = %lld;\n", tree->avg_cost);
+    printf("static int BSTroot = %hi;\n", tree->root);
+    printf("static int BSTtree[%d][2] = {\n", tree->nb_values);
+    for (size_t i = 0; i < tree->nb_values - 1; i++) {
+        printf("{%hi, %hi}\n", tree->bst[i][0], tree->bst[i][1]);
+    }
+    printf("{%hi, %hi}};\n", tree->bst[tree->nb_values - 1][0],
+                            tree->bst[tree->nb_values - 1][1]);
+    printf("static int BSTfreq[%d] = {\n", tree->nb_values);
+    for (size_t i = 0; i < tree->nb_values - 1; i++) {
+        printf("%lld,\n", values[i]);
+    }
+    printf("%lld};\n", values[tree->nb_values - 1]);
 }

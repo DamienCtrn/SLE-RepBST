@@ -53,7 +53,7 @@ int main (int argc, char *argv[]) {
          if (resuLong > 0)
          {
             n = (long)resuLong;
-            fprintf(stderr, "Number of elements in the dictionary: %ld\n", n);
+            // fprintf(stderr, "Number of elements in the dictionary: %ld\n", n);
             values = calloc(n, sizeof(*values));
          }
          else
@@ -86,7 +86,7 @@ int main (int argc, char *argv[]) {
   if (freqFile==NULL) {fprintf (stderr, "!!!!! Error opening originalFile !!!!!\n"); exit(EXIT_FAILURE);}
 
   for (size_t i = 0; i < n; i++) {
-      fscanf(freqFile, "%lli", values + i);
+      fscanf(freqFile, "%Ld", values + i);
       // printf("%d\n", *(values + i));
   }
   // Generating the tree here

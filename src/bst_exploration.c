@@ -40,7 +40,7 @@ inttype explore_and_store(Explo_Arrays *e, inttype *values){
  * @param b : index of beginning
  * @return  : root of the sub-tree
  */
-int fill_BST(int **tree, int n, short **root_array, int L, int b){
+short fill_BST(short **tree, int n, short **root_array, int L, int b){
     if (L < 1 || L > n || b < 0 || b > n-L) {
         return -1;
     } else {
@@ -150,7 +150,7 @@ void print_EA_line(Explo_Arrays *e){
     for (size_t i = 0; i < n; i++) {
         printf("[");
         for (size_t j = 0; j < n-i; j++) {
-            printf(" %lli ", e->cost_array[i][j]);
+            printf(" %Ld ", e->cost_array[i][j]);
         }
         printf("]\n");
     }
